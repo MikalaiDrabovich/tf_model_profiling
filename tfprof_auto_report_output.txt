@@ -1,0 +1,162 @@
+62 ops no flops stats due to incomplete shapes.
+Parsing Inputs...
+Node gradients/dropout/dropout/div_grad/RealDiv_1 incompatible shapes: Shapes (?, 1024) and () are not compatible.
+Node dropout/dropout/random_uniform incompatible shapes: Shapes (?, 1024) and () are not compatible.
+INFO:tensorflow:train_accuracy = 0.935 (0.852 sec)
+Node gradients/dropout/dropout/div_grad/RealDiv_1 incompatible shapes: Shapes (?, 1024) and () are not compatible.
+Node dropout/dropout/random_uniform incompatible shapes: Shapes (?, 1024) and () are not compatible.
+Node gradients/dropout/dropout/div_grad/RealDiv_1 incompatible shapes: Shapes (?, 1024) and () are not compatible.
+Node dropout/dropout/random_uniform incompatible shapes: Shapes (?, 1024) and () are not compatible.
+Node gradients/dropout/dropout/div_grad/RealDiv_1 incompatible shapes: Shapes (?, 1024) and () are not compatible.
+Node dropout/dropout/random_uniform incompatible shapes: Shapes (?, 1024) and () are not compatible.
+INFO:tensorflow:Saving timeline for 315 into '/tmp/for_chrome_tracing/timeline-315.json'.
+Node gradients/dropout/dropout/div_grad/RealDiv_1 incompatible shapes: Shapes (?, 1024) and () are not compatible.
+Node dropout/dropout/random_uniform incompatible shapes: Shapes (?, 1024) and () are not compatible.
+Node gradients/dropout/dropout/div_grad/RealDiv_1 incompatible shapes: Shapes (?, 1024) and () are not compatible.
+Node dropout/dropout/random_uniform incompatible shapes: Shapes (?, 1024) and () are not compatible.
+Node gradients/dropout/dropout/div_grad/RealDiv_1 incompatible shapes: Shapes (?, 1024) and () are not compatible.
+Node dropout/dropout/random_uniform incompatible shapes: Shapes (?, 1024) and () are not compatible.
+Node gradients/dropout/dropout/div_grad/RealDiv_1 incompatible shapes: Shapes (?, 1024) and () are not compatible.
+Node dropout/dropout/random_uniform incompatible shapes: Shapes (?, 1024) and () are not compatible.
+Node gradients/dropout/dropout/div_grad/RealDiv_1 incompatible shapes: Shapes (?, 1024) and () are not compatible.
+Node dropout/dropout/random_uniform incompatible shapes: Shapes (?, 1024) and () are not compatible.
+Node gradients/dropout/dropout/div_grad/RealDiv_1 incompatible shapes: Shapes (?, 1024) and () are not compatible.
+Node dropout/dropout/random_uniform incompatible shapes: Shapes (?, 1024) and () are not compatible.
+Node gradients/dropout/dropout/div_grad/RealDiv_1 incompatible shapes: Shapes (?, 1024) and () are not compatible.
+Node dropout/dropout/random_uniform incompatible shapes: Shapes (?, 1024) and () are not compatible.
+
+=========================Options=============================
+-max_depth                  10000
+-min_bytes                  1
+-min_peak_bytes             0
+-min_residual_bytes         0
+-min_output_bytes           0
+-min_micros                 1
+-min_accelerator_micros     0
+-min_cpu_micros             0
+-min_params                 0
+-min_float_ops              0
+-min_occurrence             0
+-step                       -1
+-order_by                   micros
+-account_type_regexes       .*
+-start_name_regexes         .*
+-trim_name_regexes          
+-show_name_regexes          .*
+-hide_name_regexes          
+-account_displayed_op_only  true
+-select                     bytes,micros
+-output                     stdout:
+
+==================Model Analysis Report======================
+node name | requested bytes | total execution time | accelerator execution time | cpu execution time
+IteratorGetNext                       0B (0.00%, 0.00%),       5.24ms (100.00%, 35.10%),           0us (100.00%, 0.00%),       5.24ms (100.00%, 63.96%)
+Conv2DBackpropFilter          638.49KB (100.00%, 0.32%),         1.42ms (64.90%, 9.54%),       1.24ms (100.00%, 18.55%),          179us (36.04%, 2.19%)
+ApplyAdam                             0B (0.00%, 0.00%),         1.21ms (55.36%, 8.08%),         916us (81.45%, 13.66%),          286us (33.85%, 3.49%)
+MatMul                          14.96MB (99.68%, 7.48%),         1.09ms (47.28%, 7.32%),         906us (67.79%, 13.51%),          184us (30.36%, 2.25%)
+Conv2D                         53.09MB (92.20%, 26.54%),         1.08ms (39.96%, 7.22%),         891us (54.29%, 13.28%),          185us (28.11%, 2.26%)
+Conv2DBackpropInput            70.08MB (65.66%, 35.04%),         1.07ms (32.75%, 7.17%),         961us (41.00%, 14.33%),          108us (25.85%, 1.32%)
+MaxPoolGrad                     16.32MB (30.62%, 8.16%),          528us (25.58%, 3.54%),          443us (26.67%, 6.61%),           85us (24.53%, 1.04%)
+BiasAdd                               0B (0.00%, 0.00%),          355us (22.04%, 2.38%),          284us (20.07%, 4.23%),           70us (23.49%, 0.85%)
+ReluGrad                              0B (0.00%, 0.00%),          352us (19.66%, 2.36%),          297us (15.83%, 4.43%),           53us (22.64%, 0.65%)
+BiasAddGrad                      4.86KB (22.46%, 0.00%),          336us (17.30%, 2.25%),          239us (11.41%, 3.56%),           95us (21.99%, 1.16%)
+Relu                                  0B (0.00%, 0.00%),          247us (15.05%, 1.66%),           205us (7.84%, 3.06%),           42us (20.83%, 0.51%)
+MaxPool                          3.76MB (22.46%, 1.88%),          202us (13.39%, 1.35%),           145us (4.79%, 2.16%),           57us (20.32%, 0.70%)
+SoftmaxCrossEntropyWithLogits        7.07KB (20.58%, 0.00%),          176us (12.04%, 1.18%),            42us (2.62%, 0.63%),          133us (19.62%, 1.62%)
+RealDiv                        819.97KB (20.57%, 0.41%),          164us (10.86%, 1.10%),            23us (2.00%, 0.34%),          139us (18.00%, 1.70%)
+Mul                                512B (20.16%, 0.00%),           158us (9.76%, 1.06%),            27us (1.65%, 0.40%),          130us (16.30%, 1.59%)
+Sum                              1.79KB (20.16%, 0.00%),           156us (8.70%, 1.05%),            16us (1.25%, 0.24%),          138us (14.71%, 1.69%)
+VariableV2                     39.50MB (20.16%, 19.75%),           114us (7.66%, 0.76%),             0us (1.01%, 0.00%),          114us (13.03%, 1.39%)
+Select                              256B (0.41%, 0.00%),           102us (6.89%, 0.68%),             9us (1.01%, 0.13%),           92us (11.64%, 1.12%)
+ArgMax                            2.05KB (0.41%, 0.00%),           100us (6.21%, 0.67%),            10us (0.88%, 0.15%),           89us (10.51%, 1.09%)
+Cast                                768B (0.41%, 0.00%),            84us (5.54%, 0.56%),             4us (0.73%, 0.06%),            80us (9.43%, 0.98%)
+Add                                 256B (0.41%, 0.00%),            77us (4.98%, 0.52%),             6us (0.67%, 0.09%),            70us (8.45%, 0.85%)
+Greater                             512B (0.41%, 0.00%),            67us (4.46%, 0.45%),             5us (0.58%, 0.07%),            62us (7.60%, 0.76%)
+AssignAdd                             0B (0.00%, 0.00%),            65us (4.01%, 0.44%),             4us (0.51%, 0.06%),            60us (6.84%, 0.73%)
+Equal                               512B (0.41%, 0.00%),            49us (3.58%, 0.33%),             4us (0.45%, 0.06%),            45us (6.11%, 0.55%)
+Identity                              0B (0.00%, 0.00%),            48us (3.25%, 0.32%),             0us (0.39%, 0.00%),            48us (5.56%, 0.59%)
+Fill                              1.80KB (0.41%, 0.00%),            42us (2.93%, 0.28%),             2us (0.39%, 0.03%),            40us (4.97%, 0.49%)
+Assign                                0B (0.00%, 0.00%),            39us (2.65%, 0.26%),             0us (0.36%, 0.00%),            39us (4.48%, 0.48%)
+Neg                             409.86KB (0.41%, 0.20%),            37us (2.39%, 0.25%),             5us (0.36%, 0.07%),            30us (4.01%, 0.37%)
+Reshape                               0B (0.00%, 0.00%),            33us (2.14%, 0.22%),             0us (0.28%, 0.00%),            33us (3.64%, 0.40%)
+RandomUniform                   409.60KB (0.21%, 0.20%),            32us (1.92%, 0.21%),            13us (0.28%, 0.19%),            18us (3.24%, 0.22%)
+Const                             1.80KB (0.00%, 0.00%),            31us (1.70%, 0.21%),             0us (0.09%, 0.00%),            31us (3.02%, 0.38%)
+Shape                                68B (0.00%, 0.00%),            31us (1.49%, 0.21%),             0us (0.09%, 0.00%),            31us (2.64%, 0.38%)
+Tile                                512B (0.00%, 0.00%),            25us (1.29%, 0.17%),             3us (0.09%, 0.04%),            22us (2.26%, 0.27%)
+OneShotIterator                     136B (0.00%, 0.00%),            19us (1.12%, 0.13%),             0us (0.04%, 0.00%),            19us (1.99%, 0.23%)
+Floor                                 0B (0.00%, 0.00%),            18us (0.99%, 0.12%),             3us (0.04%, 0.04%),            14us (1.76%, 0.17%)
+IsVariableInitialized               256B (0.00%, 0.00%),            16us (0.87%, 0.11%),             0us (0.00%, 0.00%),            16us (1.59%, 0.20%)
+ConcatV2                             16B (0.00%, 0.00%),            14us (0.76%, 0.09%),             0us (0.00%, 0.00%),            14us (1.39%, 0.17%)
+Slice                                12B (0.00%, 0.00%),            14us (0.67%, 0.09%),             0us (0.00%, 0.00%),            14us (1.22%, 0.17%)
+BroadcastGradientArgs                12B (0.00%, 0.00%),            12us (0.58%, 0.08%),             0us (0.00%, 0.00%),            12us (1.05%, 0.15%)
+Size                                256B (0.00%, 0.00%),             9us (0.50%, 0.06%),             0us (0.00%, 0.00%),             9us (0.90%, 0.11%)
+StridedSlice                          4B (0.00%, 0.00%),             8us (0.44%, 0.05%),             0us (0.00%, 0.00%),             8us (0.79%, 0.10%)
+ShapeN                               32B (0.00%, 0.00%),             6us (0.38%, 0.04%),             0us (0.00%, 0.00%),             6us (0.70%, 0.07%)
+Pack                                  8B (0.00%, 0.00%),             6us (0.34%, 0.04%),             0us (0.00%, 0.00%),             6us (0.62%, 0.07%)
+Merge                                 4B (0.00%, 0.00%),             6us (0.30%, 0.04%),             0us (0.00%, 0.00%),             6us (0.55%, 0.07%)
+_retval_train_accuracy_0_2             0B (0.00%, 0.00%),             5us (0.26%, 0.03%),             0us (0.00%, 0.00%),             5us (0.48%, 0.06%)
+Adam/update/_286                      0B (0.00%, 0.00%),             4us (0.23%, 0.03%),             0us (0.00%, 0.00%),             4us (0.42%, 0.05%)
+StopGradient                          0B (0.00%, 0.00%),             4us (0.20%, 0.03%),             0us (0.00%, 0.00%),             4us (0.37%, 0.05%)
+_retval_softmax_cross_entropy_loss/value_0_1             0B (0.00%, 0.00%),             3us (0.17%, 0.02%),             0us (0.00%, 0.00%),             3us (0.32%, 0.04%)
+Adam/update/_289                      0B (0.00%, 0.00%),             3us (0.15%, 0.02%),             0us (0.00%, 0.00%),             3us (0.28%, 0.04%)
+Switch                                0B (0.00%, 0.00%),             3us (0.13%, 0.02%),             0us (0.00%, 0.00%),             3us (0.24%, 0.04%)
+ConstantFolding/gradients/softmax_cross_entropy_loss/div_grad/BroadcastGradientArgs-0             0B (0.00%, 0.00%),             3us (0.11%, 0.02%),             0us (0.00%, 0.00%),             3us (0.21%, 0.04%)
+Adam/update/_264                      0B (0.00%, 0.00%),             3us (0.09%, 0.02%),             0us (0.00%, 0.00%),             3us (0.17%, 0.04%)
+ExpandDims                            0B (0.00%, 0.00%),             3us (0.07%, 0.02%),             0us (0.00%, 0.00%),             3us (0.13%, 0.04%)
+_retval_global_step/add_0_0             0B (0.00%, 0.00%),             2us (0.05%, 0.01%),             0us (0.00%, 0.00%),             2us (0.10%, 0.02%)
+Adam/update/_267                      0B (0.00%, 0.00%),             2us (0.04%, 0.01%),             0us (0.00%, 0.00%),             2us (0.07%, 0.02%)
+RefSwitch                             0B (0.00%, 0.00%),             2us (0.03%, 0.01%),             0us (0.00%, 0.00%),             2us (0.05%, 0.02%)
+ConstantFolding/gradients/dropout/dropout/div_grad/RealDiv_recip           256B (0.00%, 0.00%),             2us (0.01%, 0.01%),             0us (0.00%, 0.00%),             2us (0.02%, 0.02%)
+
+======================End of Report==========================
+INFO:tensorflow:train_accuracy = 0.94 (3.173 sec)
+Node gradients/dropout/dropout/div_grad/RealDiv_1 incompatible shapes: Shapes (?, 1024) and () are not compatible.
+Node dropout/dropout/random_uniform incompatible shapes: Shapes (?, 1024) and () are not compatible.
+Node gradients/dropout/dropout/div_grad/RealDiv_1 incompatible shapes: Shapes (?, 1024) and () are not compatible.
+Node dropout/dropout/random_uniform incompatible shapes: Shapes (?, 1024) and () are not compatible.
+Node gradients/dropout/dropout/div_grad/RealDiv_1 incompatible shapes: Shapes (?, 1024) and () are not compatible.
+Node dropout/dropout/random_uniform incompatible shapes: Shapes (?, 1024) and () are not compatible.
+Node gradients/dropout/dropout/div_grad/RealDiv_1 incompatible shapes: Shapes (?, 1024) and () are not compatible.
+Node dropout/dropout/random_uniform incompatible shapes: Shapes (?, 1024) and () are not compatible.
+
+=========================Options=============================
+-max_depth                  10000
+-min_bytes                  0
+-min_peak_bytes             0
+-min_residual_bytes         0
+-min_output_bytes           0
+-min_micros                 0
+-min_accelerator_micros     0
+-min_cpu_micros             0
+-min_params                 0
+-min_float_ops              0
+-min_occurrence             0
+-step                       -1
+-order_by                   name
+-account_type_regexes       _trainable_variables
+-start_name_regexes         .*
+-trim_name_regexes          
+-show_name_regexes          .*
+-hide_name_regexes          
+-account_displayed_op_only  true
+-select                     params
+-output                     stdout:
+
+==================Model Analysis Report======================
+node name | # parameters
+_TFProfRoot (--/3.27m params)
+  conv2d (--/832 params)
+    conv2d/bias (32, 32/32 params)
+    conv2d/kernel (5x5x1x32, 800/800 params)
+  conv2d_1 (--/51.26k params)
+    conv2d_1/bias (64, 64/64 params)
+    conv2d_1/kernel (5x5x32x64, 51.20k/51.20k params)
+  dense (--/3.21m params)
+    dense/bias (1024, 1.02k/1.02k params)
+    dense/kernel (3136x1024, 3.21m/3.21m params)
+  dense_1 (--/10.25k params)
+    dense_1/bias (10, 10/10 params)
+    dense_1/kernel (1024x10, 10.24k/10.24k params)
+
+======================End of Report==========================
+
