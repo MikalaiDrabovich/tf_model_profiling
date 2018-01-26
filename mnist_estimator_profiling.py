@@ -153,23 +153,39 @@ def main(unused_argv):
       checkpoint_dir='/tmp/checkpoints_mnist', save_steps=2)
  
   profiler_hook = tf.train.ProfilerHook(
-      output_dir='/tmp/profiler_data_mnist', save_steps=3,
+      output_dir='/tmp/for_chrome_tracing', save_steps=33,
       show_memory=True, show_dataflow=True)
 
-  stop_at_step_hook = tf.train.StopAtStepHook(num_steps=10)
+  stop_at_step_hook = tf.train.StopAtStepHook(num_steps=70)
 
   """
+  #TODO: capturing run_metadata with SessionRunHook may highlight 
+  # bottlenecks in tensorboard  
   run_results = []
   run_options = tf.RunOptions(trace_level=tf.RunOptions.FULL_TRACE)
   run_metadata = tf.RunMetadata()
- 
-  session_run_values = tf.train.SessionRunValues(results=run_results,options=run_options,run_metadata=run_metadata)
-  session_run_hook = tf.train.SessionRunHook(results=run_results,options=run_options,run_metadata=run_metadata)
+  session_run_values = tf.train.SessionRunValues(results=run_results,
+                                                 options=run_options,
+                                                 run_metadata=run_metadata)
+  session_run_hook = tf.train.SessionRunHook(results=run_results,
+                                             options=run_options,
+                                             run_metadata=run_metadata)
   """
-   
+  builder = tf.profiler.ProfileOptionBuilder
+  opts = builder(builder.time_and_memory()).order_by('micros').build()
+  opts2 = tf.profiler.ProfileOptionBuilder.trainable_variables_parameter()
 
-  mnist_classifier.train(input_fn=train_input_fn, hooks=[logging_hook, profiler_hook, checkpoints_hook, stop_at_step_hook]) #checkpoints_hook session_run_values
-
+  with tf.contrib.tfprof.ProfileContext('/tmp/for_tfprof',
+                                      trace_steps=range(40, 60),
+                                      dump_steps=[60]) as pctx:
+    pctx.add_auto_profiling('op', opts, [51])
+    pctx.add_auto_profiling('scope', opts2, [55])
+    pctx.add_auto_profiling('code', opts2, [57])
+ 
+    mnist_classifier.train(input_fn=train_input_fn, hooks=[logging_hook,
+                                                           stop_at_step_hook,
+                                                           #checkpoints_hook
+                                                           profiler_hook]) 
   # Evaluate the model and print results
   def eval_input_fn():
     return dataset.test(FLAGS.data_dir).batch(
@@ -206,7 +222,7 @@ if __name__ == '__main__':
       default='/tmp/checkpoints_mnist',
       help='The directory where the model will be stored.')
   parser.add_argument(
-      '--train_epochs', type=int, default=10000, help='Number of epochs to train.')
+      '--train_epochs', type=int, default=1, help='Number of epochs to train.')
   parser.add_argument(
       '--data_format',
       type=str,
