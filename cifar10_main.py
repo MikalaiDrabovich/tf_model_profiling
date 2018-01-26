@@ -277,11 +277,28 @@ def main(unused_argv):
 
     logging_hook = tf.train.LoggingTensorHook(
         tensors=tensors_to_log, every_n_iter=100)
+        
+    profiler_hook = tf.train.ProfilerHook(
+        output_dir='/tmp/for_chrome_tracing_cifar10', save_steps=33,
+        show_memory=True, show_dataflow=True)
+   
+    stop_at_step_hook = tf.train.StopAtStepHook(num_steps=70)
+        
+    builder = tf.profiler.ProfileOptionBuilder
+    opts1 = builder(builder.time_and_memory()).order_by('micros').build()
+    opts2 = tf.profiler.ProfileOptionBuilder.trainable_variables_parameter()
 
-    cifar_classifier.train(
-        input_fn=lambda: input_fn(
-            True, FLAGS.data_dir, FLAGS.batch_size, FLAGS.epochs_per_eval),
-        hooks=[logging_hook])
+    with tf.contrib.tfprof.ProfileContext('/tmp/for_tfprof_cifar10',
+                                      trace_steps=range(40, 60),
+                                      dump_steps=[60]) as pctx:
+        pctx.add_auto_profiling('op', opts1, [51])
+        pctx.add_auto_profiling('scope', opts2, [55])
+        pctx.add_auto_profiling('code', opts2, [57])
+
+        cifar_classifier.train(input_fn=lambda:
+                               input_fn(True, FLAGS.data_dir, FLAGS.batch_size, FLAGS.epochs_per_eval),
+                               hooks=[logging_hook, profiler_hook, stop_at_step_hook])
+        
 
     # Evaluate the model and print results
     eval_results = cifar_classifier.evaluate(
